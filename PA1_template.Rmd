@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This is the first project for the Reproducible Research course in Coursera's Data Science specialization track.  
 The purpose of the project was two prong, to answer a series of questions using data collected from a FitBit while presenting the results using R-markdown and the principles of reproducible research discussed during these first two weeks.
 
-The following are the steps taken in these process:
+The following are the steps taken in this process:
 
 ###Data Description
 This assignment makes use of data from a personal activity monitoring device. The device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
@@ -55,7 +55,7 @@ stepsPerDayMedian <- median(stepsPerDay$steps)
 ```
 * The missing values, NA, in the dataset were ignored. The total number of steps taken per day is represented graphically in the above histogram.
 
-* The mean and median of the total number of steps taken per day are `r.stepsPerDayMean` and `r.stepsPerDayMedian` respectively.
+* The mean and median of the total number of steps taken per day are `r stepsPerDayMean` and `r stepsPerDayMedian` respectively. These two values are almost the same which tell us the data points are evenly distributed.
 
 ###What is the average daily activity pattern?
 
@@ -76,7 +76,7 @@ abline(v=maxStepsPerInterval, col="red")
 * The average daily activity pattern is represented in the 
 time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
-* The 5-minute interval, on average across all the days in the dataset, containing the maximum number of steps is `r.maxStepsPerInterval`
+* The 5-minute interval, on average across all the days in the dataset, containing the maximum number of steps is `r maxStepsPerInterval`
 
 ###Imputing missing values
 
@@ -99,21 +99,21 @@ impStepsPerDayMedian <- median(impStepsPerDay$steps)
 meanDiff <- impStepsPerDayMean - stepsPerDayMean
 medianDiff <- impStepsPerDayMedian - stepsPerDayMedian
 
-totalStepsDiff <- sum(impActivityData$steps)-    sum(activityData$steps)
+totalStepsDiff <- sum(impActivityData$steps) -    sum(activityData$steps, na.rm=TRUE)
 
 ```
 
-* The total number of missing values, NAs, in the dataset is `r.missingValues`.
+* The total number of missing values, NAs, in the dataset is `r missingValues`.
 
 * The strategy used for filling in all of the missing values in the activityData step column was to use the mean for that 5-minute interval.
 
 * The histogram of the total number of steps taken each day reflects the adjusted data.
 
-* The mean and median total number of steps taken per day for the imputed data are `r.impStepsPerDayMean` and `r.impStepsPerDayMedian` respectively.
+* The mean and median total number of steps taken per day for the imputed data are `r impStepsPerDayMean` and `r impStepsPerDayMedian` respectively. These two values are the same.
 
-* These values differ from the estimates from the first part of the assignment; the mean differes by `r.meanDiff` and the median by `r.medianDiff`.
+* There is no difference between the mean values estimated with the missing data and the mean estimated with the imputed data `r meanDiff` and the difference between the median values is  `r medianDiff`, a very small value.
 
-* The total number of steps difference between imputed and non-imputed data is `r.totalStepsDiff`.
+* The total number of steps difference between imputed and non-imputed data is `r totalStepsDiff`.
 
 ###Are there differences in activity patterns between weekdays and weekends?
 
